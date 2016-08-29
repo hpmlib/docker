@@ -1,0 +1,45 @@
+# Nginx
+nginx:
+  build: ./Nginx
+  ports:
+    - "80:80"
+    - "443:443"
+  volumes:
+    # app
+    - /opt/app:/app
+    - /opt/nginx/conf/nginx.conf:/opt/nginx/conf/nginx.conf
+    - /opt/nginx/conf/vhost:/opt/nginx/conf/vhost
+  links:
+    - php
+
+# PHP
+php:
+  build: ./PHP
+  ports:
+    - "9000"
+  volumes:
+    - /opt/php/etc/php-fpm.conf:/opt/php/etc/php-fpm.conf
+    - /opt/php/etc/php-fpm.d/www.conf:/opt/php/etc/php-fpm.d/www.conf
+    - /opt/php/etc/php.ini:/opt/php/etc/php.ini
+  links:
+    - mariadb
+    - redis
+
+# MariaDB
+mariadb:
+  build: ./MariaDB
+  ports:
+    - "3306:3306"
+  volumes:
+    - /opt/mysql/database:/var/lib/mysql
+    - /opt/mysql/my.cnf:/etc/my.cnf
+  # environment:a
+    # - MYSQL_PASSWORD=1008611
+
+# REDIS
+redis:
+  build: ./Redis
+  ports:
+    - "6379"
+  volumes:
+    - /opt/redis:/app
