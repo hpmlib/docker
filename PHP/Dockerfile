@@ -78,7 +78,7 @@ RUN set -x \
   && ./configure --with-php-config=/opt/php/bin/php-config \
   && make \
   && make install \
-	&& echo "[Redis]\nextension=redis.so" >> /opt/php/etc/php.ini
+  && echo "[Redis]\nextension=redis.so" >> /opt/php/etc/php.ini
 
 CMD ["/opt/php/sbin/php-fpm"]
 
