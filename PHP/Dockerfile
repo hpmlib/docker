@@ -13,8 +13,6 @@ RUN set -x \
   && yum install -y wget git gcc gcc-c++ make automake autoconf perl tar re2c libjpeg libpng libjpeg-devel libpng-devel libjpeg-turbo freetype freetype-devel \
         libcurl-devel libxml2-devel libjpeg-turbo-devel libXpm-devel libXpm libicu-devel libmcrypt libmcrypt-devel libxslt-devel libxslt openssl openssl-devel bzip2-devel \
 	&& mkdir -p /opt/php \
-	&& groupadd www \
-	&& useradd www -M -s /sbin/nologin -c PHP -g www \
 
 # Download PHP and build php
 	&& cd ~ \
@@ -26,8 +24,6 @@ RUN set -x \
        '--with-config-file-path=/opt/php/etc/' \
        '--with-config-file-scan-dir=/opt/php/conf.d/' \
        '--enable-fpm' \
-       '--with-fpm-user=www' \
-       '--with-fpm-group=www' \
        '--enable-cgi' \
        '--disable-phpdbg' \
        '--enable-mbstring' \
@@ -59,13 +55,9 @@ RUN set -x \
        '--with-pdo-mysql=mysqlnd' \
        '--with-zlib' \
        '--with-gettext' \
+       '--disable-fileinfo' \
   && make \
 	&& make install
-
-  # add php configure file
-ADD php.ini /opt/php/etc/php.ini
-ADD php-fpm.conf /opt/php/etc/php-fpm.conf
-ADD www.conf /opt/php/etc/php-fpm.d/www.conf
 
   # set env
 RUN set -x \

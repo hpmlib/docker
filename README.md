@@ -1,4 +1,16 @@
 # docker
 Deploy LNMP (Linux, Nginx, MariaDB, PHP) using Docker.
 
-请不要使用他，这是一个测试版本。
+# Usage
+
+	1. mv `app` to /opt
+
+	2. cd your docker file dirctory
+
+	3. run `docker-compose up`
+
+	4. Enjoy it.
+
+# License
+
+GUN LICENSE
