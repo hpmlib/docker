@@ -1,12 +1,12 @@
-language: php
+language: python
 php:
-  - 7.0
+  - 2.7
 
 servers:
   - docker
 
 install:
   - docker-compose up
-  
+
 script:
   - docker ps
