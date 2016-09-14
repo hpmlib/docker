@@ -19,7 +19,7 @@ php:
     - "9000"
   volumes:
     - ./app/php/php-fpm.conf:/opt/php/etc/php-fpm.conf
-    - ./app/php/php-fpm.d/www.conf:/opt/php/etc/php-fpm.d/www.conf
+    - ./app/php/www.conf:/opt/php/etc/php-fpm.d/www.conf
     - ./app/php/php.ini:/opt/php/etc/php.ini
     - ./app/php/logs:/opt/logs
     - ./app/web:/app
