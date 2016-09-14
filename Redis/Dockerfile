@@ -17,9 +17,7 @@ RUN set -x \
   && rm -f redis-$REDIS_VERSION.tar.gz \
   && mv redis-$REDIS_VERSION redis \
   && cd redis \
-  && make
-
-ADD ../app/redis/redis.conf /app/redis.conf
+  && make 
 
 CMD ["/opt/redis/src/redis-server","/app/redis.conf"]
 

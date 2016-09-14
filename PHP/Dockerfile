@@ -57,11 +57,12 @@ RUN set -x \
        '--with-gettext' \
        '--disable-fileinfo' \
   && make \
-	&& make install
+	&& make install \
+  && cp ~/php-$PHP_VERSION/php.ini-production /opt/php/etc/php.ini \
+  && cp /opt/php/etc/php-fpm.conf.default /opt/php/etc/php-fpm.conf \
+  && cp /opt/php/etc/php-fpm.d/www.conf.default /opt/php/etc/php-fpm.d/www.conf
 
-  # set env
 RUN set -x \
-
   # install php extension
   && cd ~ \
   && git clone -b php7 https://github.com/phpredis/phpredis.git \
@@ -69,13 +70,7 @@ RUN set -x \
   && /opt/php/bin/phpize \
   && ./configure --with-php-config=/opt/php/bin/php-config \
   && make \
-  && make install \
-  && echo "[Redis]\nextension=redis.so" >> /opt/php/etc/php.ini
-
-# add configuration files
-ADD ../app/php/php.ini /opt/php/etc/php.ini
-ADD ../app/php/php-fpm.conf /opt/php/etc/php-fpm.conf
-ADD ../app/php/www.conf /opt/php/etc/php-fpm.d/www.conf
+  && make install
 
 CMD ["/opt/php/sbin/php-fpm"]
 

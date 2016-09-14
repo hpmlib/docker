@@ -35,8 +35,6 @@ RUN set -x \
   && make \
   && make install 
 
-ADD ../app/nginx/nginx.conf /opt/nginx/conf/nginx.conf
-
 CMD ["/opt/nginx/sbin/nginx","-g","daemon off;"]
 
 EXPOSE 80 443
