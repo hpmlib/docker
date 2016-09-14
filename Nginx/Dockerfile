@@ -33,8 +33,9 @@ RUN set -x \
     --with-http_sub_module \
     --with-openssl=/root/openssl-$OPENSSL_VERSION \
   && make \
-  && make install \
-  && mkdir /opt/nginx/conf/vhost
+  && make install 
+
+ADD ../app/nginx/nginx.conf /opt/nginx/conf/nginx.conf
 
 CMD ["/opt/nginx/sbin/nginx","-g","daemon off;"]
 

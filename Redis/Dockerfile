@@ -19,6 +19,8 @@ RUN set -x \
   && cd redis \
   && make
 
+ADD ../app/redis/redis.conf /app/redis.conf
+
 CMD ["/opt/redis/src/redis-server","/app/redis.conf"]
 
 EXPOSE 6379

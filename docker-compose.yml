@@ -6,9 +6,9 @@ nginx:
     - "443:443"
   volumes:
     # app
-    - /opt/app/web:/app
-    - /opt/app/nginx/conf/nginx.conf:/opt/nginx/conf/nginx.conf
-    - /opt/app/nginx/conf/vhost:/opt/nginx/conf/vhost
+    - ./app/web:/app
+    - ./app/nginx/conf/nginx.conf:/opt/nginx/conf/nginx.conf
+    - ./app/nginx/conf/vhost:/opt/nginx/conf/vhost
   links:
     - php
 
@@ -18,11 +18,11 @@ php:
   ports:
     - "9000"
   volumes:
-    - /opt/app/php/php-fpm.conf:/opt/php/etc/php-fpm.conf
-    - /opt/app/php/php-fpm.d/www.conf:/opt/php/etc/php-fpm.d/www.conf
-    - /opt/app/php/php.ini:/opt/php/etc/php.ini
-    - /opt/app/php/logs:/opt/logs
-    - /opt/app/web:/app
+    - ./app/php/php-fpm.conf:/opt/php/etc/php-fpm.conf
+    - ./app/php/php-fpm.d/www.conf:/opt/php/etc/php-fpm.d/www.conf
+    - ./app/php/php.ini:/opt/php/etc/php.ini
+    - ./app/php/logs:/opt/logs
+    - ./app/web:/app
   links:
     - mariadb
     - redis
@@ -33,8 +33,8 @@ mariadb:
   ports:
     - "3306:3306"
   volumes:
-    - /opt/app/mysql/database:/var/lib/mysql
-    - /opt/app/mysql/my.cnf:/etc/my.cnf
+    - ./app/mysql/database:/var/lib/mysql
+    - ./app/mysql/my.cnf:/etc/my.cnf
   # environment:a
     # - MYSQL_PASSWORD=1008611
 
@@ -44,4 +44,4 @@ redis:
   ports:
     - "6379:6379"
   volumes:
-    - /opt/app/redis:/app
+    - ./app/redis:/app

@@ -72,6 +72,11 @@ RUN set -x \
   && make install \
   && echo "[Redis]\nextension=redis.so" >> /opt/php/etc/php.ini
 
+# add configuration files
+ADD ../app/php/php.ini /opt/php/etc/php.ini
+ADD ../app/php/php-fpm.conf /opt/php/etc/php-fpm.conf
+ADD ../app/php/www.conf /opt/php/etc/php-fpm.d/www.conf
+
 CMD ["/opt/php/sbin/php-fpm"]
 
 EXPOSE 9000
