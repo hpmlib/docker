@@ -7,8 +7,8 @@ nginx:
   volumes:
     # app
     - ./app/web:/app
-    - ./app/nginx/conf/nginx.conf:/opt/nginx/conf/nginx.conf
-    - ./app/nginx/conf/vhost:/opt/nginx/conf/vhost
+    - ./app/nginx/nginx.conf:/opt/nginx/conf/nginx.conf
+    - ./app/nginx/vhost:/opt/nginx/conf/vhost
   links:
     - php
 
