@@ -24,19 +24,19 @@ php:
     - ./app/php/logs:/opt/logs
     - ./app/web:/app
   links:
-    - mariadb
+    - mysql
     - redis
 
 # MariaDB
-mariadb:
-  build: ./MariaDB
+mysql:
+  image: daocloud.io/mysql:5.7
   ports:
     - "3306:3306"
   volumes:
     - ./app/mysql/database:/var/lib/mysql
     - ./app/mysql/my.cnf:/etc/my.cnf
-  # environment:a
-    # - MYSQL_PASSWORD=1008611
+  environment:
+    - MYSQL_ROOT_PASSWORD=1008611
 
 # REDIS
 redis:
