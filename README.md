@@ -3,13 +3,9 @@ Deploy LNMP (Linux, Nginx, MySQL, PHP) using Docker.
 
 # Usage
 
-1. mv `app` to /opt
+1. run `docker-compose up`
 
-2. cd your docker file dirctory
-
-3. run `docker-compose up`
-
-4. Enjoy it.
+2. Enjoy it.
 
 # License
 
