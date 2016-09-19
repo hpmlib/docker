@@ -9,6 +9,7 @@ nginx:
     - ./app/web:/app
     - ./app/nginx/nginx.conf:/opt/nginx/conf/nginx.conf
     - ./app/nginx/vhost:/opt/nginx/conf/vhost
+    - ./app/nginx/logs:/opt/nginx/logs
   links:
     - php
 
