@@ -5,7 +5,7 @@ FROM daocloud.io/centos:latest
 MAINTAINER leepin <admin@cxsir.com>
 
 # set php version
-ENV PHP_VERSION=7.0.10
+ENV PHP_VERSION=7.0.11
 
 RUN set -x \
   && yum update -y \
