@@ -10,9 +10,6 @@ nginx:
     - ./app/nginx/nginx.conf:/opt/nginx/conf/nginx.conf
     - ./app/nginx/vhost:/opt/nginx/conf/vhost
     - ./app/nginx/logs:/opt/nginx/logs
-  environment:
-    OPENSSL_VERSION: 1.1.0
-    NGINX_VERSION: 1.10.1
   links:
     - php
 
@@ -27,8 +24,6 @@ php:
     - ./app/php/php.ini:/opt/php/etc/php.ini
     - ./app/php/logs:/opt/logs
     - ./app/web:/app
-  environment:
-    PHP_VERSION: 7.0.11
   links:
     - mysql
     - redis
@@ -51,5 +46,3 @@ redis:
     - "6379:6379"
   volumes:
     - ./app/redis:/app
-  environment:
-    REDIS_VERSION: 3.2.3
