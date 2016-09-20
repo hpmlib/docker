@@ -13,4 +13,4 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
 
 install:
-  - docker-compose up
+  - docker-compose up -d
