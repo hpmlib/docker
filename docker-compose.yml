@@ -11,8 +11,8 @@ nginx:
     - ./app/nginx/vhost:/opt/nginx/conf/vhost
     - ./app/nginx/logs:/opt/nginx/logs
   environment:
-    - OPENSSL_VERSION:1.1.0
-    - NGINX_VERSION:1.10.1
+    OPENSSL_VERSION: 1.1.0
+    NGINX_VERSION: 1.10.1
   links:
     - php
 
@@ -28,7 +28,7 @@ php:
     - ./app/php/logs:/opt/logs
     - ./app/web:/app
   environment:
-    - PHP_VERSION:7.0.11
+    PHP_VERSION: 7.0.11
   links:
     - mysql
     - redis
@@ -42,7 +42,7 @@ mysql:
     - ./app/mysql/database:/var/lib/mysql
     - ./app/mysql/my.cnf:/etc/my.cnf
   environment:
-    - MYSQL_ROOT_PASSWORD:1008611
+    MYSQL_ROOT_PASSWORD: 1008611
 
 # REDIS
 redis:
@@ -52,4 +52,4 @@ redis:
   volumes:
     - ./app/redis:/app
   environment:
-    - REDIS_VERSION:3.2.3
+    REDIS_VERSION: 3.2.3
