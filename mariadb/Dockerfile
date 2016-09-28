@@ -4,7 +4,7 @@ FROM daocloud.io/alpine:latest
 MAINTAINER Leepin.du <admin@cxsir.com>
 
 # 设置 mariadb 版本
-ENV MARIADB_VERSION 10.2.2
+ENV MARIADB_VERSION 10.1.17
 ENV TIMEZONE Asia/Shanghai
 
 # 设置为中国源
