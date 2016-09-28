@@ -3,7 +3,7 @@ FROM daocloud.io/alpine:latest
 
 MAINTAINER Leepin.du <admin@cxsir.com>
 
-# 设置 nginx openssl timezone
+# 设置 php 版本
 ENV PHP_VERSION 7.0.11
 ENV TIMEZONE Asia/Shanghai
 
