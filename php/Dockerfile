@@ -36,7 +36,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
 		    libcurl \
 		    libmcrypt-dev \
 		    libxml2-dev \
-		    libxmp \
+		    libxpm-dev \
 		    libxslt-dev \
 		    git \
     
