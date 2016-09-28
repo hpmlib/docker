@@ -23,9 +23,9 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
     	g++ \
     	make \
     	perl \
-    	
+
     # 编译 redis
-	&& cd /opt \
+	&& cd /srv \
 	&& wget http://download.redis.io/releases/redis-$REDIS_VERSION.tar.gz \
 	&& tar -zxvf redis-$REDIS_VERSION.tar.gz \
 	&& rm -f redis-$REDIS_VERSION.tar.gz \
@@ -33,6 +33,6 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
 	&& cd redis \
 	&& make 
 
-CMD ["/opt/redis/src/redis-server","/app/redis.conf"]
+CMD ["/srv/redis/src/redis-server","/app/redis.conf"]
 
 EXPOSE 6379
