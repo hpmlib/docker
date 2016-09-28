@@ -29,6 +29,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
     	cmake \
     	jemalloc-dev \
         openssl \
+        linux-headers \
         openssl-dev \
         gnutls-dev \
 
