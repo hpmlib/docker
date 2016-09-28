@@ -41,8 +41,8 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
 		    git \
     
     # 下载并编译
-	&& mkdir ~/downloads \
-	&& cd ~/downloads \
+	&& mkdir ~/download \
+	&& cd ~/download \
 	&& wget --no-check-certificate http://cn2.php.net/distributions/php-$PHP_VERSION.tar.gz \
 	&& tar -zxf php-$PHP_VERSION.tar.gz \
 	&& cd php-$PHP_VERSION \
@@ -86,18 +86,19 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
 	   '--disable-fileinfo' \
 	&& make \
 	&& make install \
-	&& cp ~/downloads/php-$PHP_VERSION/php.ini-production /opt/php/etc/php.ini \
+	&& cp ~/download/php-$PHP_VERSION/php.ini-production /opt/php/etc/php.ini \
 	&& cp /opt/php/etc/php-fpm.conf.default /opt/php/etc/php-fpm.conf \
 	&& cp /opt/php/etc/php-fpm.d/www.conf.default /opt/php/etc/php-fpm.d/www.conf \
 	
 	# install php extension
-	&& cd ~/downloads \
+	&& cd ~/download \
 	&& git clone -b php7 https://github.com/phpredis/phpredis.git \
 	&& cd phpredis \
 	&& /opt/php/bin/phpize \
 	&& ./configure --with-php-config=/opt/php/bin/php-config \
 	&& make \
-	&& make install
+	&& make install \
+	&& rm -rf ~/download
 
 CMD ["/opt/php/sbin/php-fpm"]
 
