@@ -21,34 +21,34 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
     && apk --update add wget \
 		automake \
 		autoconf \
-        gcc \
-        g++ \
-        file \
-	    libc-dev \
-	    make \
-	    openssl-dev \
-	    pcre-dev \
-	    zlib-dev \
-	    bzip2-dev \
-	    linux-headers \
-	    bison \
-	    re2c \
-	    icu-dev \
-	    curl \
-	    curl-dev \
-	    jemalloc-dev \
-	    gd-dev \
-	    perl \
+		gcc \
+		g++ \
+		file \
+		libc-dev \
+		make \
+		openssl-dev \
+		pcre-dev \
+		zlib-dev \
+		bzip2-dev \
+		linux-headers \
+		bison \
+		re2c \
+		icu-dev \
+		curl \
+		curl-dev \
+		jemalloc-dev \
+		gd-dev \
+		perl \
 		libjpeg-turbo-dev \
-	    libpng-dev \
-	    freetype-dev \
-	    libmcrypt-dev \
-	    libxml2-dev \
-	    libxpm-dev \
-	    libxslt-dev \
-	    gdbm-dev \
-	    gettext-dev \
-	    git \
+		libpng-dev \
+		freetype-dev \
+		libmcrypt-dev \
+		libxml2-dev \
+		libxpm-dev \
+		libxslt-dev \
+		gdbm-dev \
+		gettext-dev \
+		git \
 
     # 下载并编译
 	&& mkdir ~/download \
