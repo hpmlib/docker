@@ -25,7 +25,10 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
 		    openssl-dev \
 		    pcre-dev \
 		    zlib-dev \
+		    bzip2-dev \
 		    linux-headers \
+		    bison \
+		    re2c \
 		    curl \
 		    jemalloc-dev \
 		    gd-dev \
