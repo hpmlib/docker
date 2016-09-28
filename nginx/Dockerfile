@@ -20,17 +20,17 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
 
     # 安装依赖
     && apk --update add wget \
-            gcc \
-		    libc-dev \
-		    make \
-		    openssl-dev \
-		    pcre-dev \
-		    zlib-dev \
-		    linux-headers \
-		    curl \
-		    jemalloc-dev \
-		    gd-dev \
-		    perl \
+        gcc \
+	    libc-dev \
+	    make \
+	    openssl-dev \
+	    pcre-dev \
+	    zlib-dev \
+	    linux-headers \
+	    curl \
+	    jemalloc-dev \
+	    gd-dev \
+	    perl \
 
     # Download openssl
     && mkdir ~/download \

@@ -19,35 +19,37 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
 
     # 安装依赖
     && apk --update add wget \
-            gcc \
-            g++ \
-            file \
-		    libc-dev \
-		    make \
-		    openssl-dev \
-		    pcre-dev \
-		    zlib-dev \
-		    bzip2-dev \
-		    linux-headers \
-		    bison \
-		    re2c \
-		    icu-dev \
-		    curl \
-		    curl-dev \
-		    jemalloc-dev \
-		    gd-dev \
-		    perl \
-			libjpeg-turbo-dev \
-		    libpng-dev \
-		    freetype-dev \
-		    libmcrypt-dev \
-		    libxml2-dev \
-		    libxpm-dev \
-		    libxslt-dev \
-		    gdbm-dev \
-		    gettext-dev \
-		    git \
-    
+		automake \
+		autoconf \
+        gcc \
+        g++ \
+        file \
+	    libc-dev \
+	    make \
+	    openssl-dev \
+	    pcre-dev \
+	    zlib-dev \
+	    bzip2-dev \
+	    linux-headers \
+	    bison \
+	    re2c \
+	    icu-dev \
+	    curl \
+	    curl-dev \
+	    jemalloc-dev \
+	    gd-dev \
+	    perl \
+		libjpeg-turbo-dev \
+	    libpng-dev \
+	    freetype-dev \
+	    libmcrypt-dev \
+	    libxml2-dev \
+	    libxpm-dev \
+	    libxslt-dev \
+	    gdbm-dev \
+	    gettext-dev \
+	    git \
+
     # 下载并编译
 	&& mkdir ~/download \
 	&& cd ~/download \
@@ -63,6 +65,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
 	   '--disable-phpdbg' \
 	   '--enable-mbstring' \
 	   '--enable-calendar' \
+	   '--enable-phar' \
 	   '--with-xsl' \
 	   '--with-openssl' \
 	   '--enable-soap' \
