@@ -21,6 +21,8 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
     && apk --update add wget \
             gcc \
 		    libc-dev \
+		    pkg-config \
+		    libedit2 \
 		    make \
 		    openssl-dev \
 		    pcre-dev \
@@ -29,12 +31,12 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
 		    linux-headers \
 		    bison \
 		    re2c \
+		    icu-dev \
 		    curl \
 		    curl-dev \
 		    jemalloc-dev \
 		    gd-dev \
 		    perl \
-		    libjpeg \
 			libjpeg-turbo-dev \
 		    libpng-dev \
 		    freetype-dev \
@@ -44,6 +46,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
 		    libxslt-dev \
 		    gdbm-dev \
 		    gettext-dev \
+		    xz-utils \
 		    git \
     
     # 下载并编译
