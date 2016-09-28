@@ -28,7 +28,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
     	zlib-dev \
     	cmake \
     	jemalloc \
-        openssl-dev \
+        openssl \
 
     # 下载源码编译
     && mkdir ~/download \
