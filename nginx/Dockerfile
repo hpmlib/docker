@@ -49,7 +49,8 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
         --with-openssl=/root/download/openssl-$OPENSSL_VERSION \
         --with-ld-opt="-ljemalloc" \
         && make \
-        && make install
+        && make install \
+        && rm -rf ~/download
 
 CMD ["/opt/nginx/sbin/nginx","-g","daemon off;"]
 
