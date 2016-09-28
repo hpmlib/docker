@@ -24,7 +24,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
     	g++ \
     	make \
     	bison \
-    	ncurses \
+    	ncurses-dev \
     	zlib-dev \
     	cmake \
     	jemalloc \
