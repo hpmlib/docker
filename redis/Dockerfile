@@ -18,10 +18,12 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
     && echo $TIMEZONE > /etc/timezone \
 
     # 安装依赖
-    && apk --update add wget \
+    && apk --update add --no-cache --virtual .build-deps wget \
     	gcc \
     	g++ \
     	make \
+        linux-headers \
+        musl-dev \
     	perl \
 
     # 编译 redis
@@ -31,7 +33,8 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
 	&& rm -f redis-$REDIS_VERSION.tar.gz \
 	&& mv redis-$REDIS_VERSION redis \
 	&& cd redis \
-	&& make 
+	&& make \
+    && apk del .build-deps
 
 CMD ["/srv/redis/src/redis-server","/app/redis.conf"]
 

@@ -18,7 +18,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
     && echo $TIMEZONE > /etc/timezone \
 
     # 安装依赖
-    && apk --update add git \
+    && apk --update add --no-cache --virtual .build-deps git \
     	gzip \
     	gcc \
     	g++ \

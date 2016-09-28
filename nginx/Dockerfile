@@ -19,7 +19,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
     && echo $TIMEZONE > /etc/timezone \
 
     # 安装依赖
-    && apk --update add wget \
+    && apk --update add --no-cache --virtual .build-deps wget \
 		gcc \
 		libc-dev \
 		make \
@@ -55,7 +55,8 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
 	    --with-ld-opt="-ljemalloc" \
     && make \
     && make install \
-    && rm -rf ~/download
+    && rm -rf ~/download \
+    && apk del .build-deps
 
 CMD ["/opt/nginx/sbin/nginx","-g","daemon off;"]
 

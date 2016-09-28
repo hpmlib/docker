@@ -18,7 +18,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
     && echo $TIMEZONE > /etc/timezone \
 
     # 安装依赖
-    && apk --update add wget \
+    && apk --update add --no-cache --virtual .build-deps  wget \
 		automake \
 		autoconf \
 		gcc \
@@ -109,7 +109,8 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
 	&& ./configure --with-php-config=/opt/php/bin/php-config \
 	&& make \
 	&& make install \
-	&& rm -rf ~/download
+	&& rm -rf ~/download \
+	&& apk del .build-deps
 
 CMD ["/opt/php/sbin/php-fpm"]
 
