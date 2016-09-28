@@ -25,6 +25,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
 			    curl \
 			    jemalloc-dev \
 			    gd-dev \
+			    perl \
 
         # Download openssl
         && mkdir ~/download \
