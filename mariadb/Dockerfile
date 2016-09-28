@@ -35,7 +35,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
     && mkdir /srv/database \
     && mkdir /srv/config \
     && cd ~/download \
-    && wget https://github.com/MariaDB/server/archive/mariadb-$MARIADB_VERSION.tar.gz \
+    && wget --no-check-cartificate https://mirrors.tuna.tsinghua.edu.cn/mariadb/mariadb-$MARIADB_VERSION/source/mariadb-$MARIADB_VERSION.tar.gz \
     && tar -zxvf mariadb-$MARIADB_VERSION.tar.gz \
     && cd mariadb-$MARIADB_VERSION \
     && cmake . \
