@@ -21,6 +21,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
     && apk --update add --no-cache --virtual .build-deps  wget \
 		automake \
 		autoconf \
+		linux-headers \
 		gcc \
 		g++ \
 		file \
