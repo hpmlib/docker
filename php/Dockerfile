@@ -30,13 +30,13 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
 		    bison \
 		    re2c \
 		    curl \
+		    curl-dev \
 		    jemalloc-dev \
 		    gd-dev \
 		    perl \
 		    libjpeg \
 		    libpng-dev \
 		    freetype-dev \
-		    libcurl \
 		    libmcrypt-dev \
 		    libxml2-dev \
 		    libxpm-dev \
