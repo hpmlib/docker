@@ -35,12 +35,15 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
 		    gd-dev \
 		    perl \
 		    libjpeg \
+			libjpeg-turbo-dev \
 		    libpng-dev \
 		    freetype-dev \
 		    libmcrypt-dev \
 		    libxml2-dev \
 		    libxpm-dev \
 		    libxslt-dev \
+		    gdbm-dev \
+		    gettext-dev \
 		    git \
     
     # 下载并编译
