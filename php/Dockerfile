@@ -20,6 +20,8 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
     # 安装依赖
     && apk --update add wget \
             gcc \
+            g++ \
+            file \
 		    libc-dev \
 		    make \
 		    openssl-dev \
