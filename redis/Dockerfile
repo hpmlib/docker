@@ -4,7 +4,7 @@ FROM daocloud.io/alpine:latest
 MAINTAINER Leepin.du <admin@cxsir.com>
 
 # 设置 redis 版本
-ENV REDIS_VERSION 3.2.24
+ENV REDIS_VERSION 3.2.4
 ENV TIMEZONE Asia/Shanghai
 
 # 设置为中国源
