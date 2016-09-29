@@ -76,15 +76,6 @@ RUN set -x \
   && make \
   && make install \
 
-  # 安装 memecached
-  && cd ~/download \
-  && git clone -b php7 https://github.com/php-memcached-dev/php-memcached.git \
-  && cd php-memcached \
-  && /opt/php/bin/phpize \
-  && ./configure --with-php-config=/opt/php/bin/php-config \
-  && make \
-  && make install \
-
   # 安装 Composer
   && cd ~/download \
   && /opt/php/bin/php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
