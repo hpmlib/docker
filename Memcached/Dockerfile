@@ -5,7 +5,7 @@ FROM daocloud.io/centos:latest
 MAINTAINER leepin <admin@cxsir.com>
 
 # 设置版本
-ENV MEMCACHED_VERSION 1.4.13
+ENV MEMCACHED_VERSION 1.4.31
 
 # 安装依赖
 RUN set -x \
