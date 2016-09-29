@@ -9,7 +9,7 @@ ENV MEMCACHED_VERSION 1.4.13
 
 # 安装依赖
 RUN set -x \
-	&& yum install libevent-devel -y \
+	&& yum install wget libevent-devel -y \
 	&& wget http://www.memcached.org/files/memcached-$MEMCACHED_VERSION.tar.gz \
 	&& cd memcached-$MEMCACHED_VERSION \
 	&& ./configure --prefix=/opt/memcached \
