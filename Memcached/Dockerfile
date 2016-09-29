@@ -11,7 +11,7 @@ ENV MEMCACHED_VERSION 1.4.31
 RUN set -x \
 	&& yum install wget libevent-devel -y \
 	&& wget http://www.memcached.org/files/memcached-$MEMCACHED_VERSION.tar.gz \
-	&& tar -zxvf memcached-$MEMCACHED_VERSION \
+	&& tar -zxvf memcached-$MEMCACHED_VERSION.tar.gz \
 	&& cd memcached-$MEMCACHED_VERSION \
 	&& ./configure --prefix=/opt/memcached \
 	&& make \
