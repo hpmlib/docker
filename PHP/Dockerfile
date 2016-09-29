@@ -80,7 +80,7 @@ RUN set -x \
   && cd ~/download \
   && /opt/php/bin/php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
   && /opt/php/bin/php composer-setup.php --install-dir=/usr/local/sbin --filename=composer \
-  && /opt/php/bin/php php -r "unlink('composer-setup.php');" \
+  && /opt/php/bin/php -r "unlink('composer-setup.php');" \
 
   # 删除安装文件
   && rm -rf ~/download
