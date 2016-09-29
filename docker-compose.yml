@@ -6,10 +6,10 @@ nginx:
     - "443:443"
   volumes:
     # app
-    - ./app/web:/app
-    - ./app/nginx/nginx.conf:/opt/nginx/conf/nginx.conf
-    - ./app/nginx/vhost:/opt/nginx/conf/vhost
-    - ./app/nginx/logs:/opt/nginx/logs
+    - /Users/leepin/Documents/Developer/App/Web:/app
+    - /Users/leepin/Documents/Developer/App/nginx/nginx.conf:/opt/nginx/conf/nginx.conf
+    - /Users/leepin/Documents/Developer/App/nginx/vhost:/opt/nginx/conf/vhost
+    - /Users/leepin/Documents/Developer/App/nginx/logs:/opt/nginx/logs
   links:
     - php
 
@@ -19,11 +19,11 @@ php:
   ports:
     - "9000"
   volumes:
-    - ./app/php/php-fpm.conf:/opt/php/etc/php-fpm.conf
-    - ./app/php/www.conf:/opt/php/etc/php-fpm.d/www.conf
-    - ./app/php/php.ini:/opt/php/etc/php.ini
-    - ./app/php/logs:/opt/logs
-    - ./app/web:/app
+    - /Users/leepin/Documents/Developer/App/php/php-fpm.conf:/opt/php/etc/php-fpm.conf
+    - /Users/leepin/Documents/Developer/App/php/www.conf:/opt/php/etc/php-fpm.d/www.conf
+    - /Users/leepin/Documents/Developer/App/php/php.ini:/opt/php/etc/php.ini
+    - /Users/leepin/Documents/Developer/App/php/logs:/opt/logs
+    - /Users/leepin/Documents/Developer/App/web:/app
   links:
     - mysql
     - redis
@@ -34,8 +34,8 @@ mysql:
   ports:
     - "3306:3306"
   volumes:
-    - ./app/mysql/database:/var/lib/mysql
-    - ./app/mysql/my.cnf:/etc/my.cnf
+    - /Users/leepin/Documents/Developer/App/mysql/database:/var/lib/mysql
+    - /Users/leepin/Documents/Developer/App/mysql/my.cnf:/etc/my.cnf
   environment:
     MYSQL_ROOT_PASSWORD: 1008611
 
@@ -45,4 +45,4 @@ redis:
   ports:
     - "6379:6379"
   volumes:
-    - ./app/redis:/app
+    - /Users/leepin/Documents/Developer/App/redis:/app

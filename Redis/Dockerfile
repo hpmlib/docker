@@ -1,13 +1,13 @@
-# Pull Base image
+# 拉取 CentOS
 FROM daocloud.io/centos:latest
 
-# MAINTAINER
+# 维护者
 MAINTAINER leepin <admin@cxsir.com>
 
-# REDIS VERSION
-ENV REDIS_VERSION=3.2.3
+# 设置 Redis 版本
+ENV REDIS_VERSION 3.2.4
 
-# Download and Build it.
+# 下载并编译
 RUN set -x \
   && yum update -y \
   && yum install -y wget gcc gcc-c++ make perl tar \
@@ -19,6 +19,6 @@ RUN set -x \
   && cd redis \
   && make 
 
-CMD ["/opt/redis/src/redis-server","/app/redis.conf"]
+CMD ['/opt/redis/src/redis-server','/app/redis.conf']
 
 EXPOSE 6379
