@@ -9,7 +9,7 @@ ENV MEMCACHED_VERSION 1.4.31
 
 # 安装依赖
 RUN set -x \
-	&& yum install wget libevent-devel -y \
+	&& yum install wget gcc gcc-c++ libevent-devel -y \
 	&& wget http://www.memcached.org/files/memcached-$MEMCACHED_VERSION.tar.gz \
 	&& tar -zxvf memcached-$MEMCACHED_VERSION.tar.gz \
 	&& cd memcached-$MEMCACHED_VERSION \
