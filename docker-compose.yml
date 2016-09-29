@@ -27,12 +27,14 @@ php:
   links:
     - mysql
     - redis
+    - beanstalkd
+    - memcached
 
 # MySQL
 mysql:
   image: daocloud.io/mysql:5.7
   ports:
-    - "3306:3306"
+    - "127.0.0.1:3306:3306"
   volumes:
     - ./App/mysql/database:/var/lib/mysql
     - ./App/mysql/my.cnf:/etc/my.cnf
@@ -43,6 +45,21 @@ mysql:
 redis:
   build: ./Redis
   ports:
-    - "6379:6379"
+    - "127.0.0.1:6379:6379"
   volumes:
     - ./App/redis:/app
+
+# Memcached
+memcached:
+  build: ./Memcached
+  ports:
+    - "127.0.0.1:11211:11211"
+
+# Beanstalkd
+beanstalkd:
+  build: ./Beanstalkd
+  ports:
+    - "127.0.0.1:11300:11300"
+  volumes:
+    - ./App/beanstalkd:/app
+
