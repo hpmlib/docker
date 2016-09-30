@@ -28,7 +28,6 @@ php:
     - mysql
     - redis
     - beanstalkd
-    - memcached
 
 # MySQL
 mysql:
@@ -48,12 +47,6 @@ redis:
     - "127.0.0.1:6379:6379"
   volumes:
     - ./App/redis:/app
-
-# Memcached
-memcached:
-  build: ./Memcached
-  ports:
-    - "127.0.0.1:11211:11211"
 
 # Beanstalkd
 beanstalkd:
