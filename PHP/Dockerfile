@@ -76,11 +76,16 @@ RUN set -x \
   && make \
   && make install \
 
+  # 加入环境变量
+  && echo "export PATH=/opt/php/bin:/opt/php/sbin:$PATH" >> ~/.bashrc \
+  && source ~/.bashrc \
+
   # 安装 Composer
   && cd ~/download \
-  && /opt/php/bin/php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
-  && /opt/php/bin/php composer-setup.php --install-dir=/usr/local/sbin --filename=composer \
-  && /opt/php/bin/php -r "unlink('composer-setup.php');" \
+  && php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
+  && php composer-setup.php --install-dir=/usr/local/sbin --filename=composer \
+  && php -r "unlink('composer-setup.php');" \
+
 
   # 删除安装文件
   && rm -rf ~/download
