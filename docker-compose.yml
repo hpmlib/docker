@@ -6,7 +6,7 @@ nginx:
     - "443:443"
   volumes:
     # app
-    - ./App/Web:/app
+    - ./App/web:/app
     - ./App/nginx/nginx.conf:/opt/nginx/conf/nginx.conf
     - ./App/nginx/vhost:/opt/nginx/conf/vhost
     - ./App/nginx/logs:/opt/nginx/logs

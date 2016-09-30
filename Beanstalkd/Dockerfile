@@ -11,6 +11,6 @@ RUN set -x \
 	&& yum install epel-release -y \
 	&& yum install beanstalkd -y
 
-CMD ['beanstalkd', '-b', '/app']
+CMD ["beanstalkd", "-b", "/app"]
 
 EXPOSE 11300

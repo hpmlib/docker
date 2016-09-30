@@ -86,6 +86,6 @@ RUN set -x \
   && rm -rf ~/download
 
 
-CMD ['/opt/php/sbin/php-fpm']
+CMD ["/opt/php/sbin/php-fpm"]
 
 EXPOSE 9000

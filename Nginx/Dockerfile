@@ -39,6 +39,6 @@ RUN set -x \
   && make install \
   && rm -rf ~/download
 
-CMD ['/opt/nginx/sbin/nginx','-g','daemon off;']
+CMD ["/opt/nginx/sbin/nginx","-g","daemon off;"]
 
 EXPOSE 80 443
