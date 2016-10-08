@@ -11,7 +11,7 @@ ENV OPENSSL_VERSION 1.0.2h
 # 安装依赖
 RUN set -x \
   && yum update -y \
-  && yum install -y wget gcc gcc-c++ make automake autoconf libtool perl tar bzip2-devel bzip2 openssl openssl-devel zlib zlib-devel \
+  && yum install -y wget gcc gcc-c++ make automake autoconf libtool perl file tar bzip2-devel bzip2 openssl openssl-devel zlib zlib-devel \
 
   # 创建下载目录
   && mkdir ~/download \
