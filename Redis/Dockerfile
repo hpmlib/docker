@@ -5,7 +5,7 @@ FROM daocloud.io/centos:latest
 MAINTAINER leepin <admin@cxsir.com>
 
 # 设置 Redis 版本
-ENV REDIS_VERSION 3.2.4
+ENV REDIS_VERSION 3.2.5
 
 # 下载并编译
 RUN set -x \
