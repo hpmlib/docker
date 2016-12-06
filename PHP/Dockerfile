@@ -5,7 +5,7 @@ FROM daocloud.io/centos:latest
 MAINTAINER leepin <admin@cxsir.com>
 
 # 设置 PHP 版本
-ENV PHP_VERSION 7.0.11
+ENV PHP_VERSION 7.1.0
 
 # 安装依赖
 RUN set -x \
