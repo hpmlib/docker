@@ -5,7 +5,7 @@ FROM daocloud.io/centos:latest
 MAINTAINER leepin <admin@cxsir.com>
 
 # 设置 openssl 和 nginx 版本
-ENV NGINX_VERSION 1.10.1
+ENV NGINX_VERSION 1.10.2
 ENV OPENSSL_VERSION 1.0.2h
 
 # 安装依赖
