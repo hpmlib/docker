@@ -1,7 +1,7 @@
 # docker
 Deploy LNMP (Linux, Nginx, MySQL, PHP) using Docker.
 
-[![Build Status](https://travis-ci.org/leepin/docker.svg)](https://travis-ci.org/leepin/docker)
+[![Build Status](https://travis-ci.org/leongpeng/docker.svg)](https://travis-ci.org/leongpeng/docker)
 
 # Usage
 
