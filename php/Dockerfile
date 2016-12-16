@@ -1,10 +1,10 @@
 # 使用 daocloud 的镜像国内速度快
 FROM daocloud.io/alpine:latest
 
-MAINTAINER Leepin.du <admin@cxsir.com>
+MAINTAINER leongpeng <admin@cxsir.com>
 
 # 设置 php 版本
-ENV PHP_VERSION 7.0.11
+ENV PHP_VERSION 7.1.0
 ENV TIMEZONE Asia/Shanghai
 
 # 设置为中国源
@@ -18,7 +18,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
     && echo $TIMEZONE > /etc/timezone \
 
     # 安装依赖
-    && apk --update add --no-cache --virtual .build-deps  wget \
+    && apk --update add --no-cache wget \
 		automake \
 		autoconf \
 		linux-headers \
@@ -73,6 +73,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
 	   '--enable-zip' \
 	   '--enable-shmop' \
 	   '--enable-sockets' \
+	   '--enable-bcmath' \
 	   '--with-gd' \
 	   '--with-freetype-dir=/usr/include/freetype2/freetype' \
 	   '--with-jpeg-dir' \
@@ -102,16 +103,25 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
 	&& cp /opt/php/etc/php-fpm.conf.default /opt/php/etc/php-fpm.conf \
 	&& cp /opt/php/etc/php-fpm.d/www.conf.default /opt/php/etc/php-fpm.d/www.conf \
 	
+    # 加入环境变量
+    && echo "export PATH=/opt/php/bin:/opt/php/sbin:$PATH" >> /etc/profile.d/php \
+    && source /etc/profile.d/php \
+
 	# install php extension
 	&& cd ~/download \
 	&& git clone -b php7 https://github.com/phpredis/phpredis.git \
 	&& cd phpredis \
-	&& /opt/php/bin/phpize \
+	&& phpize \
 	&& ./configure --with-php-config=/opt/php/bin/php-config \
 	&& make \
 	&& make install \
-	&& rm -rf ~/download \
-	&& apk del .build-deps
+
+	# 安装 Composer
+	&& cd ~/download \
+	&& php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
+	&& php composer-setup.php --install-dir=/usr/local/bin --filename=composer \
+	&& php -r "unlink('composer-setup.php');" \
+	&& rm -rf ~/download
 
 CMD ["/opt/php/sbin/php-fpm"]
 

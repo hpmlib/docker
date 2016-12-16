@@ -1,11 +1,11 @@
 # 使用 daocloud 的镜像国内速度快
 FROM daocloud.io/alpine:latest
 
-MAINTAINER Leepin.du <admin@cxsir.com>
+MAINTAINER leongpeng <admin@cxsir.com>
 
 # 设置 nginx openssl timezone
 ENV OPENSSL_VERSION 1.0.2h
-ENV NGINX_VERSION 1.10.1
+ENV NGINX_VERSION 1.10.2
 ENV TIMEZONE Asia/Shanghai
 
 # 设置为中国源
@@ -19,7 +19,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
     && echo $TIMEZONE > /etc/timezone \
 
     # 安装依赖
-    && apk --update add --no-cache --virtual .build-deps wget \
+    && apk --update add --no-cache wget \
 		gcc \
 		libc-dev \
 		make \
@@ -55,8 +55,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
 	    --with-ld-opt="-ljemalloc" \
     && make \
     && make install \
-    && rm -rf ~/download \
-    && apk del .build-deps
+    && rm -rf ~/download
 
 CMD ["/opt/nginx/sbin/nginx","-g","daemon off;"]
 

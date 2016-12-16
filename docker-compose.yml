@@ -1,0 +1,91 @@
+version: "2"
+services: 
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    mem_limit: 64MB
+    cpu_shares: 128
+    dns:
+      - 114.114.114.114
+      - 114.114.114.115
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ../App/web:/app
+      - ../App/nginx/nginx.conf:/opt/nginx/conf/nginx.conf
+      - ../App/nginx/vhost:/opt/nginx/conf/vhost
+      - ../App/nginx/logs:/opt/nginx/logs
+    links:
+      - php
+      - php56
+
+  php:
+    build: ./php
+    container_name: php71
+    cpu_shares: 128
+    mem_limit: 128MB
+    dns:
+      - 114.114.114.114
+      - 114.114.114.115
+    ports:
+      - "9000"
+    volumes:
+      - ../App/php/php-fpm.conf:/opt/php/etc/php-fpm.conf
+      - ../App/php/www.conf:/opt/php/etc/php-fpm.d/www.conf
+      - ../App/php/php.ini:/opt/php/etc/php.ini
+      - ../App/php/logs:/opt/logs
+      - ../App/web:/app
+    links:
+      - mysql
+      - redis
+
+  php56:
+    build: ./php56
+    container_name: php56
+    cpu_shares: 256
+    mem_limit: 256MB
+    dns:
+      - 114.114.114.114
+      - 114.114.114.115
+    ports:
+      - "9000"
+    volumes:
+      - ../App/php56/php-fpm.conf:/opt/php/etc/php-fpm.conf
+      - ../App/php56/php.ini:/opt/php/etc/php.ini
+      - ../App/php56/logs:/opt/logs
+      - ../App/web:/app
+    environment:
+      PHP_VERSION: 5.6.29
+    links:
+      - mysql
+      - redis
+
+  mysql:
+    image: daocloud.io/mysql:5.7
+    container_name: mysql
+    cpu_shares: 384
+    mem_limit: 512MB
+    dns:
+      - 114.114.114.114
+      - 114.114.114.115
+    ports:
+      - "127.0.0.1:3306:3306"
+    volumes:
+      - ../App/mysql/database:/var/lib/mysql
+      - ../App/mysql/my.cnf:/etc/my.cnf
+    environment:
+      MYSQL_ROOT_PASSWORD: 1008611
+
+  redis:
+    build: ./redis
+    container_name: redis
+    cpu_shares: 128
+    mem_limit: 64MB
+    dns:
+      - 114.114.114.114
+      - 114.114.114.115
+    ports:
+      - "127.0.0.1:6379:6379"
+    volumes:
+      - ../App/redis:/app
